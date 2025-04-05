@@ -1,8 +1,10 @@
 ---
-output: html_document
+title: "R Fundamentals - Part 1 of 4: Introduction"
+output: html_notebook
 editor_options: 
   chunk_output_type: console
 ---
+
 ### Writing and Running Code
 ```{r}
 library(here)
@@ -16,7 +18,8 @@ test
 # Inside code chunks, text lines need to be started with a # (hashtag)
 
 # You can use R like a giant calculator! 
-2 + 3
+a<- 2 + 3
+ls()
 ```
 
 💡 **Tip:** Writing **comments** about your code is very important. The best practice is to write **why** you are doing something, not just **what** you are doing.
@@ -95,13 +98,10 @@ You can remove variables from the global environment.
 # remove a single variable
 rm(year)
 
-# remove all variables in the global environment
-rm(list = ls())
+
 ```
 
-⚠️ **Warning**: You cannot undo removing a variable. You must instead re-create the variable.
-
-If you want to rename a variable, the easiest thing to do is create a variable with the new name and remove the old variable.
+=
 
 ```{r}
 # variable storing the population of Mexico
@@ -118,6 +118,9 @@ rm(pop)
 
 # print out a list of current variables
 ls()
+
+# remove all variables in the global environment
+rm(list = ls())
 ```
 
 💡 **Tip:** `ls()` and `rm()` are both **functions**, which are commands that generate some output. We will learn several functions across the workshop. The best way to learn and remember functions in R is to Google them or ask ChatGPT!
