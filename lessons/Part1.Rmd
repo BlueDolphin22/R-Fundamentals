@@ -5,137 +5,36 @@ editor_options:
   chunk_output_type: console
 ---
 
-### Writing and Running Code
+
 ```{r}
 library(here)
 source(here("source", "get_lib.R"))
 ```
 
-test
-```{r}
-#ctrl+alt+i : code chunk
-
-# Inside code chunks, text lines need to be started with a # (hashtag)
-
-# You can use R like a giant calculator! 
-a<- 2 + 3
-ls()
-```
-
-
-
-
+# Gap Minder
 
 ```{r}
-# a variable that gives the year 
-year <- 2023
-
-# print out the value
-year
-```
-
-
-
-```{r}
-# assign a numeric value to the variable year
-year <- 2023
-
-# assign a character value to the variable country
-country <- "Mexico"
-
-# assign a numeric value to the variable lifeexp
-lifeexp <- 76.2
-
-```
-
-⚠
-```{r}
-
-
-
-```
-
-
-```{r}
-# print a list of all variables in your environment
-ls()
-```
-
-
-```{r}
-
-# remove a single variable
-rm(year)
-
-
-```
-
-
-
-```{r}
-# variable storing the population of Mexico
-pop <- 126
-
-# rename to be more informative
-pop_millions <- pop
-
-# print it to confirm that it holds the value of pop
-pop_millions
-
-# remove the old variable
-rm(pop)
-
-# print out a list of current variables
-ls()
-
-# remove all variables in the global environment
-rm(list = ls())
-```
-
-
-```{r}
-
-
-
-```
-
-
-```{r}
-# create a vector with the approx population of Mexico for 5 years  
-c(123, 124, 125, 126, 127)
-
-# as chance would have it, Mexico's population has increased by about 1 million each year from 2018 to 2022
-```
-
-Vectors are assigned to variables using the same assignment operator (\<-) that we used for single value variables.
-
-```{r}
-# save the population counts to a vector
-pop_mexico <- c(123, 124, 125, 126, 127)
-pop_mexico
-```
-
-If we do something to the values in a vector, R applies that operation to each item in the vector.
-
-```{r}
-# multiple the values in pop_mexico by 1 million
-pop_mexico*1000000
-
-# you forgot to count 2 million people - add them to our counts
-pop_mexico + 2
-```
-
-## 🎬 **Demo**: Next Time...
-
-Most of the time, you won't be working with single value variables or vectors. Instead, you'll be working with data that contains multiple variables. In Part 2, we will learn how to read in data to R and create **data frames** (a way to store data with multiple rows and columns).
-
-🔔 **Tip:** Run the two chunks of code below. What do you think we are doing?
-
-```{r}
-# read in data
+# ctrl +alt+i : insert code chunk
+# ctrl +shift + c: comment out
+#ctrl +shift + m  : insert pipe operator
+#ctrl +enter : execute line
+#ctrl+shift+k : knit
 gap <- fread(here("data","gapminder.csv"))
 head(gap)
 
-~/GitHub/R-Fundamentals/data
+my_ten <- unique(gap$country)[1:10]
+```
+
+##Plot
+```{r}
+gap %>% ggplot(aes(x=year, y=pop))+ geom_point()
+```
+
+###My ten
+```{r}
+gap %>% filter(country %in% my_ten) %>% ggplot(aes(x=year, y=pop, color = country))+ geom_point()
+```
+##Multiple Plots
+```{r}
 
 ```
