@@ -22,31 +22,9 @@ a<- 2 + 3
 ls()
 ```
 
-💡 **Tip:** Writing **comments** about your code is very important. The best practice is to write **why** you are doing something, not just **what** you are doing.
 
-### 🥊 Challenge 1: Create and Run a Chunk of Code
 
-Use the two methods above to create a chunk of code. In the chunk, experiment with writing and running some math. Remember to comment your code.
 
-💡 **Tip:** You can save this notebook with your answers to the challenges and any notes you take throughout the workshop. Click the 💾 icon in the toolbar or select File --\> Save.
-
-## Why use R?
-
-R is a programming language designed for **data analysis**. R is great for data cleaning, data visualization, and statistical analysis, among other things.
-
-R is **not** a general purpose programming language. If you want to do something like build a website or train a machine learning model, languages such as [Python](https://github.com/dlab-berkeley/Python-Fundamentals-Pilot) are better suited for these tasks.
-
-🔔 **Question:** What tasks would you like to use R for? How do you envision using R in your research or class projects? **Put your answer in the chat.**
-
-## Creating Variables
-
-Variables are objects that hold values. Variables can be inside data sets (like columns in an excel sheet) or standalone objects. The syntax for creating a variable is:
-
--   Left hand side is the variable name.
-
--   Next is the **assignment** **operator**: `<-`
-
--   Right hand side is the value to assign to that variable.
 
 ```{r}
 # a variable that gives the year 
@@ -56,9 +34,7 @@ year <- 2023
 year
 ```
 
-We can read the above code as "create a variable called year and assign to it the value 2023".
 
-Variables can hold different types of values.
 
 ```{r}
 # assign a numeric value to the variable year
@@ -72,26 +48,19 @@ lifeexp <- 76.2
 
 ```
 
-⚠️ **Warning**: We will talk about different types of variables (numeric, characters, categorical) in Part 2.
-
-### 🥊 Challenge 2: Creating Variables
-
-Create a variable called `continent` and assign it the value "Americas". Create a variable called `pop` and assign it the value 4.5.
-
+⚠
 ```{r}
 
 
 
 ```
 
-All variables created show up in the Global Environment (top right panel).
 
 ```{r}
 # print a list of all variables in your environment
 ls()
 ```
 
-You can remove variables from the global environment.
 
 ```{r}
 
@@ -101,7 +70,7 @@ rm(year)
 
 ```
 
-=
+
 
 ```{r}
 # variable storing the population of Mexico
@@ -123,13 +92,6 @@ ls()
 rm(list = ls())
 ```
 
-💡 **Tip:** `ls()` and `rm()` are both **functions**, which are commands that generate some output. We will learn several functions across the workshop. The best way to learn and remember functions in R is to Google them or ask ChatGPT!
-
-### 🥊 Challenge 3: Creating Variables from Other Variables
-
-Pick a country. Look up its population and create a variable which stores the population. Now look up the GDP (Gross Domestic Product) and create another variable which stores the GDP.
-
-Can you use these two variables to create a third variable which stores the GDP per capita (GDP divided by population)?
 
 ```{r}
 
@@ -137,11 +99,6 @@ Can you use these two variables to create a third variable which stores the GDP 
 
 ```
 
-## Creating Vectors
-
-Most of the time, we want to store multiple values. For example, I might want to record the population in Mexico from 2018 to 2022. **Vectors** can store multiple values as long as they're the same type (all numeric, all characters etc).
-
-To create a vector, you use the `c()` function, which stands for concatenate (meaning combine).
 
 ```{r}
 # create a vector with the approx population of Mexico for 5 years  
@@ -176,24 +133,9 @@ Most of the time, you won't be working with single value variables or vectors. I
 
 ```{r}
 # read in data
-gap <- read.csv(file = "../data/gapminder.csv")
+gap <- fread(here("data","gapminder.csv"))
 head(gap)
 
-```
-
-```{r}
-# subset data
-gap[gap$country == "Mexico", c("country", "year", "pop")] 
-
+~/GitHub/R-Fundamentals/data
 
 ```
-
-## Key Points
-
--   In RStudio you can write code in an **R Notebook** or an **R Script** - we are using a notebook
-
--   Use the syntax **variable \<- value** to create a variable and assign it a value
-
--   Vectors store multiple values as long as they're the same type
-
--   We used the following functions: `ls()`, `rm()`, and `c()`. To see how to use them use **?** followed by the function name (or Google them)
